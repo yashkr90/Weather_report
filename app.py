@@ -1,3 +1,4 @@
+from distutils.log import debug
 from flask import Flask, render_template, request
 #import configparser for api
 import configparser
@@ -39,8 +40,10 @@ def render_results():
     humidity="{0:.2f}".format(data["main"]["humidity"])
     wind_speed="{0:.2f}".format(data["wind"]["speed"])
 
+    CITY_name=city_name.upper()
+
     #calling and retrundinf results page and passing the variavbles to results.html which has jinja variables with same name(jinja variables can have any name)
-    return render_template('results.html', city_name=city_name,
+    return render_template('results.html', city_name=CITY_name,
                                             temp=temp ,
                                             feels_like=feels_like, 
                                             weather=weather,
@@ -51,4 +54,5 @@ def render_results():
 
 #ensures app only runs once and multipke instance are not craeted
 if __name__=='__main__':
+    app.debug=True
     app.run()
