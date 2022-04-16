@@ -11,10 +11,7 @@ load_dotenv()
 
 
 #puts module(congifparser)'s class (ConfigParser) inside config(object)
-# def get_api_key():
-#     config=configparser.ConfigParser()
-#     config.read('config.ini')
-#     return config['openweathermap']['api']
+
 
 #city name accepts as parameters..remove the city bame in api url and add format() to fill in curly brackets
 # api_key=process.env.API_KEY
