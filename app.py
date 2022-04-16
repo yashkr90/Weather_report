@@ -1,16 +1,23 @@
+from concurrent.futures import process
 from distutils.log import debug
 from flask import Flask, render_template, request
 #import configparser for api
 import configparser
 import requests
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
 
 #puts module(congifparser)'s class (ConfigParser) inside config(object)
-def get_api_key():
-    config=configparser.ConfigParser()
-    config.read('config.ini')
-    return config['openweathermap']['api']
+# def get_api_key():
+#     config=configparser.ConfigParser()
+#     config.read('config.ini')
+#     return config['openweathermap']['api']
 
 #city name accepts as parameters..remove the city bame in api url and add format() to fill in curly brackets
+# api_key=process.env.API_KEY
 def get_weather_result(city_name,api_key):
     api_url="http://api.openweathermap.org/data/2.5/weather?q={}&units=metric&appid={}".format(city_name,api_key)
     r=requests.get(api_url)
@@ -28,7 +35,7 @@ def weather_dashboard():
 def render_results():
     city_name=request.form['nameofcity']  #return form's data which is text input and store in city_name
     
-    api_key=get_api_key()
+    api_key=os.getenv("api_key")
     data=get_weather_result(city_name,api_key)
     #formatting floating numbers are present into strings
 
