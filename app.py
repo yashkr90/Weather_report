@@ -39,11 +39,11 @@ def render_results():
     pressure="{0:.2f}".format(data["main"]["pressure"])
     humidity="{0:.2f}".format(data["main"]["humidity"])
     wind_speed="{0:.2f}".format(data["wind"]["speed"])
-
+    name=data["name"]
     CITY_name=city_name.upper()
 
     #calling and retrundinf results page and passing the variavbles to results.html which has jinja variables with same name(jinja variables can have any name)
-    return render_template('results.html', city_name=CITY_name,
+    return render_template('results.html', city_name=name,
                                             temp=temp ,
                                             feels_like=feels_like, 
                                             weather=weather,
