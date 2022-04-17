@@ -8,3 +8,4 @@
 2. Create .env file in root and in that write
    api_key=<your api key>
 3. Run app.py
+4. [check on localhost](http://localhost:5000/)
